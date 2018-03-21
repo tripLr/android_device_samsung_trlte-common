@@ -35,6 +35,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     consumerir.apq8084
 
+# IRSC
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/sec_config:system/vendor/etc/sec_config
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.APQ8084
