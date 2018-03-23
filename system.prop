@@ -6,9 +6,6 @@ media.stagefright.less-secure=true
 # Fingerprint
 fingerprint_enabled=1
 
-# Media /Default OMX service to non-Treble
-persist.media.treble_omx=false
-
 # Radio
 rild.libpath=/system/vendor/lib/libsec-ril.so
 ro.ril.telephony.mqanelements=6
