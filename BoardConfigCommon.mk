@@ -74,7 +74,7 @@ TARGET_INIT_VENDOR_LIB := libinit_apq8084
 TARGET_RECOVERY_DEVICE_MODULES := libinit_apq8084
 
 # Extended Filesystem Support
-TARGET_EXFAT_DRIVER := exfat
+TARGET_EXFAT_DRIVER := sdfat
 
 # Legacy BLOB Support
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
