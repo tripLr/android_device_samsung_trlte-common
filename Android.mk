@@ -32,7 +32,7 @@ $(ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "ADSP firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /firmware/image/$(notdir $@) $@
+	$(hide) ln -sf /firmware-modem/image/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(ADSP_SYMLINKS)
 
@@ -47,6 +47,30 @@ $(DTCPIP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(DTCPIP_SYMLINKS)
+
+MBA_IMAGES := \
+    mba.b00 mba.mdt
+
+MBA_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(MBA_IMAGES)))
+$(MBA_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "MBA firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware-modem/image/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(MBA_SYMLINKS)
+
+MC_IMAGES := \
+    mc_v2.b00 mc_v2.b01 mc_v2.b02 mc_v2.b03 mc_v2.mdt
+
+MC_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(MC_IMAGES)))
+$(MC_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Mobicore firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware/image/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(MC_SYMLINKS)
 
 SECSTOR_IMAGES := \
     sec_stor.b00 sec_stor.b01 sec_stor.b02 sec_stor.b03 sec_stor.mdt
@@ -146,45 +170,6 @@ $(WV_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(WV_SYMLINKS)
-
-include $(CLEAR_VARS)
-SEC_LIB_FILES := \
-	libprotobuf-cpp-full.so
-
-SEC_LIB_SYMLINKS := $(addprefix $(TARGET_OUT)/lib/,$(notdir $(SEC_LIB_FILES)))
-$(SEC_LIB_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "SEC LIB symlink: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /system/vendor/lib/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(SEC_LIB_SYMLINKS)
-
-include $(CLEAR_VARS)
-SEC_BIN_FILES := \
-	ks
-
-SEC_BIN_SYMLINKS := $(addprefix $(TARGET_OUT)/bin/,$(notdir $(SEC_BIN_FILES)))
-$(SEC_BIN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "SEC BIN symlink: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /system/vendor/bin/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(SEC_BIN_SYMLINKS)
-
-include $(CLEAR_VARS)
-ACBD_FILES := \
-    Bluetooth_cal.acdb  General_cal.acdb  Global_cal.acdb  Handset_cal.acdb  Hdmi_cal.acdb  Headset_cal.acdb  Speaker_cal.acdb
-
-ACBD_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/,$(notdir $(ACBD_FILES)))
-$(ACBD_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "ACBD Audio Files: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /system/vendor/etc/acdbdata/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(ACBD_SYMLINKS)
 
 # Create links for audcal data files
 $(shell mkdir -p $(TARGET_OUT)/etc/firmware/wcd9320; \

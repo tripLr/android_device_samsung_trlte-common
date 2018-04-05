@@ -1,5 +1,6 @@
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2016 The Mokee Project
+# Copyright (C) 2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,12 +15,26 @@
 # limitations under the License.
 #
 
-# NFC
-$(call inherit-product, device/samsung/apq8084-common/nfc/product.mk)
+LOCAL_PATH := $(call my-dir)
 
-PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.0-impl
+include $(CLEAR_VARS)
 
-PRODUCT_COPY_FILES += \
-    device/samsung/apq8084-common/nfc/s3fwrn5/libnfc-sec.conf:system/vendor/etc/libnfc-brcm.conf \
-    device/samsung/apq8084-common/nfc/s3fwrn5/libnfc-sec-hal.conf:system/vendor/etc/sec-nfc.conf
+LOCAL_MODULE := fingerprint.apq8084
+LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_SRC_FILES := \
+    fingerprint.c \
+    fingerprint_tz.c \
+    QSEEComAPI.c \
+    hash.c
+
+LOCAL_C_INCLUDES += \
+    external/sqlite/dist
+
+LOCAL_SHARED_LIBRARIES := \
+        liblog \
+        libsqlite
+
+LOCAL_MODULE_TAGS := optional
+LOCAL_PROPRIETARY_MODULE := true
+
+include $(BUILD_SHARED_LIBRARY)
