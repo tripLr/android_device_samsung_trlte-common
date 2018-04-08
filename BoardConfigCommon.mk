@@ -28,12 +28,15 @@ AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
 AUDIO_FEATURE_ENABLED_LOW_LATENCY_CAPTURE := true
 BOARD_USES_ES705 := true
 
+# Binder API
+TARGET_USES_64_BIT_BINDER := true
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := APQ8084
 
 # Kernel
 BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 dwc3_msm.cpu_to_affin=1 androidboot.selinux=permissive audit=0
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 dwc3_msm.cpu_to_affin=1 androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := zImage
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DT := true
@@ -71,7 +74,7 @@ TARGET_INIT_VENDOR_LIB := libinit_apq8084
 TARGET_RECOVERY_DEVICE_MODULES := libinit_apq8084
 
 # Extended Filesystem Support
-TARGET_EXFAT_DRIVER := exfat
+TARGET_EXFAT_DRIVER := sdfat
 
 # Legacy BLOB Support
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
@@ -84,6 +87,9 @@ TARGET_BOARD_PLATFORM := apq8084
 
 # Power HAL
 TARGET_POWERHAL_VARIANT := qcom
+TARGET_HAS_LEGACY_POWER_STATS := true
+TARGET_HAS_NO_WIFI_STATS := true
+TARGET_USES_INTERACTION_BOOST := true
 
 # Properties
 TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
@@ -96,6 +102,9 @@ BOARD_GLOBAL_CPPFLAGS += -DQCOM_BSP
 # Radio
 BOARD_PROVIDES_LIBRIL := true
 TARGET_RIL_VARIANT := caf
+
+# Recovery
+LZMA_RAMDISK_TARGETS := recovery
 
 # Sensors
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
