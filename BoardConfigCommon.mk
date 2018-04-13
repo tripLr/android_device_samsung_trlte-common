@@ -70,7 +70,11 @@ USE_OPENGL_RENDERER := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 # Filesystem
+ifneq ($(RR_VERSION),)
+TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.rr.fs
+else
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
+endif
 
 # HIDL
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest.xml
