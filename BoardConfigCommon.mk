@@ -53,6 +53,14 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_USES_MEDIA_EXTENSIONS := true
 TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY := libcamera_parameters_ext
 
+# Dexpreopt
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= false
+    WITH_DEXPREOPT := true
+  endif
+endif
+
 # Display & Render
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
