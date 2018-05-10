@@ -18,6 +18,11 @@
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
 
+ifneq ($(RR_BUILD),)
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/rr-overlay
+endif
+
 # Advanced Display
 PRODUCT_PACKAGES += \
     AdvancedDisplay
