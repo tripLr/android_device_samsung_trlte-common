@@ -45,6 +45,8 @@ BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
 TARGET_KERNEL_CONFIG := trltexx_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/apq8084
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/../../tools/gcc-linaro-4.9.4-2017.01-x86_64_arm-eabi/bin
 
 # Camera
 TARGET_USE_COMPAT_GRALLOC_ALIGN := true
