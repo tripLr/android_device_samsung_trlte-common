@@ -232,6 +232,11 @@ addRequestToList(int serial, int slotId, int request) {
 #endif
 #endif
 
+    if (request >= (int)NUM_ELEMS(s_commands)) {
+        RLOGE("Request %s not supported", requestToString(request));
+        return NULL;
+    }
+
     pRI = (RequestInfo *)calloc(1, sizeof(RequestInfo));
     if (pRI == NULL) {
         RLOGE("Memory allocation failed for request %s", requestToString(request));
@@ -782,11 +787,9 @@ void RIL_onUnsolicitedResponse(int unsolResponse, const void *data,
     int rwlockRet = pthread_rwlock_rdlock(radioServiceRwlockPtr);
     assert(rwlockRet == 0);
 
-    if (s_unsolResponses[unsolResponseIndex].responseFunction) {
-        ret = s_unsolResponses[unsolResponseIndex].responseFunction(
-                (int) soc_id, responseType, 0, RIL_E_SUCCESS, const_cast<void*>(data),
-                datalen);
-    }
+    ret = s_unsolResponses[unsolResponseIndex].responseFunction(
+            (int) soc_id, responseType, 0, RIL_E_SUCCESS, const_cast<void*>(data),
+            datalen);
 
     rwlockRet = pthread_rwlock_unlock(radioServiceRwlockPtr);
     assert(rwlockRet == 0);
