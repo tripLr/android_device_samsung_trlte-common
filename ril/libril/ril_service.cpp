@@ -76,12 +76,14 @@ struct OemHookImpl;
 #if (SIM_COUNT >= 2)
 sp<RadioImpl> radioService[SIM_COUNT];
 sp<OemHookImpl> oemHookService[SIM_COUNT];
+int64_t nitzTimeReceived[SIM_COUNT];
 // counter used for synchronization. It is incremented every time response callbacks are updated.
 volatile int32_t mCounterRadio[SIM_COUNT];
 volatile int32_t mCounterOemHook[SIM_COUNT];
 #else
 sp<RadioImpl> radioService[1];
 sp<OemHookImpl> oemHookService[1];
+int64_t nitzTimeReceived[1];
 // counter used for synchronization. It is incremented every time response callbacks are updated.
 volatile int32_t mCounterRadio[1];
 volatile int32_t mCounterOemHook[1];
@@ -2819,9 +2821,9 @@ Return<void> RadioImpl::setCarrierInfoForImsiEncryption(int32_t serial,
         memsetAndFreeStrings(2, imsiEncryption.mnc, imsiEncryption.mcc);
         return Void();
     }
-    int32_t lSize = data.carrierKey.size();
-    imsiEncryption.carrierKey = new uint8_t[lSize];
-    memcpy(imsiEncryption.carrierKey, data.carrierKey.data(), lSize);
+    imsiEncryption.carrierKeyLength = data.carrierKey.size();
+    imsiEncryption.carrierKey = new uint8_t[imsiEncryption.carrierKeyLength];
+    memcpy(imsiEncryption.carrierKey, data.carrierKey.data(), imsiEncryption.carrierKeyLength);
     imsiEncryption.expirationTime = data.expirationTime;
     CALL_ONREQUEST(pRI->pCI->requestNumber, &imsiEncryption,
             sizeof(RIL_CarrierInfoForImsiEncryption), pRI, mSlotId);
@@ -7006,7 +7008,6 @@ int radio::nitzTimeReceivedInd(int slotId,
             return 0;
         }
         hidl_string nitzTime;
-        int64_t timeReceived = android::elapsedRealtime();
         char *resp = strndup((char *) response, responseLen);
         char *tmp = resp;
 
@@ -7026,10 +7027,11 @@ int radio::nitzTimeReceivedInd(int slotId,
         free(resp);
 #if VDBG
         RLOGD("nitzTimeReceivedInd: nitzTime %s receivedTime %" PRId64, nitzTime.c_str(),
-                timeReceived);
+                nitzTimeReceived[slotId]);
 #endif
         Return<void> retStatus = radioService[slotId]->mRadioIndication->nitzTimeReceived(
-                convertIntToRadioIndicationType(indicationType), nitzTime, timeReceived);
+                convertIntToRadioIndicationType(indicationType), nitzTime,
+                nitzTimeReceived[slotId]);
         radioService[slotId]->checkReturnStatus(retStatus);
     } else {
         RLOGE("nitzTimeReceivedInd: radioService[%d]->mRadioIndication == NULL", slotId);
@@ -8687,4 +8689,9 @@ pthread_rwlock_t * radio::getRadioServiceRwlock(int slotId) {
     #endif
 
     return radioServiceRwlockPtr;
+}
+
+// should acquire write lock for the corresponding service before calling this
+void radio::setNitzTimeReceived(int slotId, long timeReceived) {
+    nitzTimeReceived[slotId] = timeReceived;
 }
