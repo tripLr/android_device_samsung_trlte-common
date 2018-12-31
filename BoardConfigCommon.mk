@@ -65,9 +65,11 @@ endif
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
-HAVE_ADRENO_SOURCE := false
-USE_OPENGL_RENDERER := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x02000000U
+
+# Exclude serif fonts for saving system.img size.
+EXCLUDE_SERIF_FONTS := true
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
@@ -88,6 +90,10 @@ TARGET_EXFAT_DRIVER := sdfat
 
 # Legacy BLOB Support
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
+    /system/bin/mediaserver=22 \
+    /system/vendor/bin/mm-qcamera-daemon=22 \
+    /system/vendor/bin/hw/rild=27
 
 # Media
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
@@ -97,7 +103,7 @@ TARGET_BOARD_PLATFORM := apq8084
 
 # Power HAL
 TARGET_HAS_LEGACY_POWER_STATS := true
-TARGET_HAS_NO_WIFI_STATS := true
+TARGET_HAS_NO_WLAN_STATS := true
 TARGET_USES_INTERACTION_BOOST := true
 
 # Properties

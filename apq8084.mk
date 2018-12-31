@@ -31,6 +31,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.apq8084 \
     libxml2
+PRODUCT_COPY_FILES += \
+     $(LOCAL_PATH)/configs/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
 
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
@@ -84,9 +86,6 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/_hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/_hals.conf
-
-PRODUCT_PACKAGES += \
-    sensors.apq8084
 
 # Thermal engine
 PRODUCT_COPY_FILES += \

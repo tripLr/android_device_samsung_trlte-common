@@ -23,6 +23,7 @@
 #include <telephony/ril_cdma_sms.h>
 #include <cutils/sockets.h>
 #include <cutils/jstring.h>
+#include <hwbinder/ProcessState.h>
 #include <telephony/record_stream.h>
 #include <utils/Log.h>
 #include <utils/SystemClock.h>
@@ -56,6 +57,10 @@ RIL_onRequestComplete(RIL_Token t, RIL_Errno e, void *response, size_t responsel
 
 extern "C" void
 RIL_onRequestAck(RIL_Token t);
+
+extern "C" void
+initWithMmapSize();
+
 namespace android {
 
 #define PHONE_PROCESS "radio"
@@ -84,6 +89,9 @@ namespace android {
 
 // request, response, and unsolicited msg print macro
 #define PRINTBUF_SIZE 8096
+
+// Set hwbinder buffer size to 512KB
+#define HW_BINDER_MMAP_SIZE 524288
 
 enum WakeType {DONT_WAKE, WAKE_PARTIAL};
 
@@ -195,11 +203,6 @@ static UnsolResponseInfo s_unsolResponses[] = {
 
 char * RIL_getServiceName() {
     return ril_service_name;
-}
-
-extern "C"
-void RIL_setServiceName(const char * s) {
-    strncpy(ril_service_name, s, MAX_SERVICE_NAME_LENGTH);
 }
 
 RequestInfo *
@@ -476,10 +479,10 @@ RIL_register (const RIL_RadioFunctions *callbacks) {
 }
 
 extern "C" void
-RIL_register_socket (RIL_RadioFunctions *(*Init)(const struct RIL_Env *, int, char **),
+RIL_register_socket (const RIL_RadioFunctions *(*Init)(const struct RIL_Env *, int, char **),
         RIL_SOCKET_TYPE socketType, int argc, char **argv) {
 
-    RIL_RadioFunctions* UimFuncs = NULL;
+    const RIL_RadioFunctions* UimFuncs = NULL;
 
     if(Init) {
         UimFuncs = Init(&RilSapSocket::uimRilEnv, argc, argv);
@@ -1250,6 +1253,11 @@ rilSocketIdToString(RIL_SOCKET_ID socket_id)
         default:
             return "not a valid RIL";
     }
+}
+
+extern "C" void
+initWithMmapSize() {
+    android::hardware::ProcessState::initWithMmapSize((size_t)(HW_BINDER_MMAP_SIZE));
 }
 
 } /* namespace android */
