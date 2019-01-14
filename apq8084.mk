@@ -31,8 +31,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.apq8084 \
     libxml2
+
 PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/configs/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
+    $(LOCAL_PATH)/configs/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
 
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
@@ -40,10 +41,10 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/flp.conf:/system/etc/flp.conf \
-    $(LOCAL_PATH)/configs/gps.conf:/system/etc/gps.conf \
-    $(LOCAL_PATH)/configs/izat.conf:/system/etc/izat.conf \
-    $(LOCAL_PATH)/configs/sap.conf:/system/etc/sap.conf
+    $(LOCAL_PATH)/configs/flp.conf:/$(TARGET_COPY_OUT_SYSTEM)/etc/flp.conf \
+    $(LOCAL_PATH)/configs/gps.conf:/$(TARGET_COPY_OUT_SYSTEM)/etc/gps.conf \
+    $(LOCAL_PATH)/configs/izat.conf:/$(TARGET_COPY_OUT_SYSTEM)/etc/izat.conf \
+    $(LOCAL_PATH)/configs/sap.conf:/$(TARGET_COPY_OUT_SYSTEM)/etc/sap.conf
 
 # IR Blaster
 PRODUCT_PACKAGES += \
@@ -89,7 +90,7 @@ PRODUCT_COPY_FILES += \
 
 # Thermal engine
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
+    $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/thermal-engine.conf
 
 # Common Qualcomm
 $(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
