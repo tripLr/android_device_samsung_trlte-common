@@ -17,6 +17,3 @@ persist.radio.add_power_save=1
 
 # UI thread scheduling
 sys.use_fifo_ui=1
-
-#First API Level
-ro.product.first_api_level=23
