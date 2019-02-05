@@ -19,7 +19,7 @@ cc_binary {
     proprietary: true,
     relative_install_path: "hw",
     srcs: [
-        "HealthService.cpp",
+        "service.cpp",
     ],
 
     cflags: [
