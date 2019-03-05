@@ -80,10 +80,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.samsung
 
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service.samsung
-    
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl.samsung8084 \
@@ -96,6 +92,10 @@ PRODUCT_PACKAGES += \
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-service.lineage
+
+# Netd
+PRODUCT_PACKAGES += \
+    android.system.net.netd@1.0
 
 # Wifi
 PRODUCT_PACKAGES += \
