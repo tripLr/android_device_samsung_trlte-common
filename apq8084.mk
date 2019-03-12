@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+PRODUCT_CHARACTERISTICS := phone
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
