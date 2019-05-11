@@ -7,6 +7,11 @@ fingerprint_enabled=1
 # logd
 ro.logd.auditd.dmesg=false
 
+# GPS
+persist.gps.qc_nlp_in_use=0
+ro.gps.agps_provider=1
+sys.qca1530=detect
+
 # Radio
 rild.libpath=/system/vendor/lib/libsec-ril.so
 ro.ril.telephony.qan_resp_strings=6
