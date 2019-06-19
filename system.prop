@@ -1,22 +1,143 @@
+# AptX
+persist.bt.enableAptXHD=true
+
+# Allow tethering without provisioning app
+net.tethering.noprovisioning=true
+
+# Audio
+af.fast_track_multiplier=1
+vendor.audio_hal.period_size=192
+vendor.audio.offload.buffer.size.kb=32
+vendor.audio.offload.gapless.enabled=true
+vendor.audio.offload.multiple.enabled=false
+vendor.audio.offload.pcm.16bit.enable=true
+vendor.audio.offload.pcm.24bit.enable=true
+av.offload.enable=true
+av.streaming.offload.enable=true
+persist.vendor.audio.fluence.speaker=true
+persist.vendor.audio.fluence.voicecall=true
+persist.vendor.audio.fluence.voicerec=false
+ro.vendor.audio.sdk.fluencetype=fluence
+vendor.voice.path.for.pcm.voip=false
+vendor.dedicated.device.for.voip=true
+
+# Burn-in protection
+ro.systemui.burn_in_protection=true
+
 # Camera
 camera2.portability.force_api=1
+
+# Dalvik heap
+dalvik.vm.heapstartsize=8m
+dalvik.vm.heapgrowthlimit=256m
+dalvik.vm.heapsize=512m
+dalvik.vm.heaptargetutilization=0.75
+dalvik.vm.heapminfree=2m
+dalvik.vm.heapmaxfree=8m
+
+# Display
+persist.hwc.mdpcomp.enable=false
+ro.hdcp2.rx=tz
+ro.qualcomm.cabl=1
+ro.secwvk=144
+ro.sf.lcd_density=560
+ro.opengles.version=196608
+debug.egl.hw=0
+debug.sf.hw=0
+debug.gralloc.enable_fb_ubwc=0
+debug.hwui.use_buffer_age=false
+persist.hwc.enable_vds=false
+sdm.perf_hint_window=50
 
 # Fingerprint
 fingerprint_enabled=1
 
-# logd
-ro.logd.auditd.dmesg=false
+# FOSS CONFIGS
+ro.qcom.dpps.sensortype=3
+ro.qualcomm.display.paneltype=1
+ro.qualcomm.foss=1
+config.foss.xml=1
+config.foss.path=/vendor/etc/FOSSConfig.xml
 
 # GPS
 persist.gps.qc_nlp_in_use=0
 ro.gps.agps_provider=1
 sys.qca1530=detect
 
+# logd
+ro.logd.auditd.dmesg=false
+
+# Memory optimizations
+ro.vendor.qti.sys.fw.bservice_enable=true
+
+# NFC
+ro.nfc.sec_hal=true
+
+# Nitz
+persist.rild.nitz_plmn=""
+persist.rild.nitz_long_ons_0=""
+persist.rild.nitz_long_ons_1=""
+persist.rild.nitz_long_ons_2=""
+persist.rild.nitz_long_ons_3=""
+persist.rild.nitz_short_ons_0=""
+persist.rild.nitz_short_ons_1=""
+persist.rild.nitz_short_ons_2=""
+persist.rild.nitz_short_ons_3=""
+
+# Perf
+ro.core_ctl_min_cpu=2
+ro.core_ctl_max_cpu=4
+ro.min_freq_0=300000
+ro.qualcomm.perf.cores_online=2
+
+# Qualcomm
+persist.timed.enable=true
+ro.vendor.extension_library=/vendor/lib/libqc-opt.so
+
 # Radio
+persist.data.ds_fmc_app.mode=0
+persist.data.qmi.adb_logmask=0
+persist.net.doxlat=true
+persist.omh.enabled=1
+persist.radio.apm_sim_not_pwdn=1
+persist.radio.fill_eons=1
+persist.radio.use_se_table_only=1
 rild.libpath=/system/vendor/lib/libsec-ril.so
 ro.ril.telephony.qan_resp_strings=6
 ro.telephony.mms_data_profile=5
 persist.radio.add_power_save=1
 
+# Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
+ro.telephony.call_ring.multiple=0
+
+# Sensors
+debug.sensors=1
+
+# Timeout failed shutdowns
+ro.build.shutdown_timeout=5
+
 # UI thread scheduling
 sys.use_fifo_ui=1
+
+# USB OTG interface
+persist.sys.isUsbOtgEnabled=true
+
+# Volte
+persist.vendor.radio.force_on_dc=true
+persist.radio.custom_ecc=1
+persist.radio.data_con_rprt=1
+persist.vendor.radio.data_ltd_sys_ind=1
+persist.radio.data_ltd_sys_ind=1
+persist.vendor.radio.ignore_dom_time=10
+persist.radio.ignore_dom_time=10
+persist.radio.rat_on=combine
+persist.radio.is_wps_enabled=true
+persist.radio.videopause.mode=1
+persist.radio.sap_silent_pin=1
+persist.radio.always_send_plmn=true
+persist.rcs.supported=1
+persist.dbg.ims_volte_enable=1
+
+# Wifi
+wifi.interface=wlan0
+wifi.direct.interface=p2p-dev-wlan0
