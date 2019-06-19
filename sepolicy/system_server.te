@@ -1,0 +1,37 @@
+allow system_server sysfs_mdnie:file rw_file_perms;
+allow system_server sysfs_mdnie:dir rw_dir_perms;
+allow system_server sensors_device:chr_file rw_file_perms;
+allow system_server efs_file:dir r_dir_perms;
+allow system_server efs_file:file r_file_perms;
+allow system_server wifi_efs_file:file r_file_perms;
+allow system_server wifi_efs_file:dir search;
+allow system_server unlabeled:file unlink;
+allow system_server user_profile_data_file:dir read;
+allow system_server app_efs_file:dir search;
+allow system_server app_efs_file:file r_file_perms;
+
+allow system_server sysfs_sec_led:file write;
+allow system_server sysfs_sec_touchkey:file write;
+
+# whitelist qualcomm specific ioctls
+allow system_server self:socket ioctl;
+allowxperm system_server self:socket ioctl msm_sock_ipc_ioctls;
+
+allow system_server sysfs_batteryinfo:file w_file_perms;
+allow system_server sysfs_batteryinfo:file rw_file_perms;
+
+allow system_server {
+    efs_file
+    mpctl_data_file
+}:dir search;
+
+allow system_server {
+    efs_file
+    qti_debugfs
+}:file r_file_perms;
+
+allow system_server {
+    sysfs_sec_ir
+    sysfs_sec_led
+    sysfs_sec_touchkey
+}:file w_file_perms;
