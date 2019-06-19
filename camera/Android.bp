@@ -1,5 +1,5 @@
 cc_library_static {
     name: "libcamera_parameters_ext",
-    include_dirs: ["device/samsung/apq8084-common/include"],
+    include_dirs: ["device/samsung/trlte-common/include"],
     srcs: ["CameraParameters.cpp"],
 }

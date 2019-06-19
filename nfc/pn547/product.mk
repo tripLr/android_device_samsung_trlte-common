@@ -15,7 +15,7 @@
 #
 
 # NFC
-$(call inherit-product, device/samsung/apq8084-common/nfc/product.mk)
+$(call inherit-product, device/samsung/trlte-common/nfc/product.mk)
 
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.0-impl \
@@ -23,5 +23,5 @@ PRODUCT_PACKAGES += \
     nfc_nci.apq8084
 
 PRODUCT_COPY_FILES += \
-    device/samsung/apq8084-common/nfc/pn547/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
-    device/samsung/apq8084-common/nfc/pn547/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
+    device/samsung/trlte-common/nfc/pn547/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
+    device/samsung/trlte-common/nfc/pn547/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
