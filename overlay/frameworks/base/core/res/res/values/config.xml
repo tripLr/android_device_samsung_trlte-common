@@ -397,6 +397,9 @@
          config to 7. -->
     <integer name="config_deviceHardwareWakeKeys">65</integer>
 
+    <!-- Button backlight -->
+    <bool name="config_button_brightness_support">true</bool>
+
     <!-- The device supports freeform window management. Windows have title bars and can be moved
          and resized. If you set this to true, you also need to add
          PackageManager.FEATURE_FREEFORM_WINDOW_MANAGEMENT feature to your device specification.
