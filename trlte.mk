@@ -28,6 +28,10 @@ $(call inherit-product, device/samsung/trlte-common/debug.mk)
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
 
+# OpenGApps
+TARGET_GAPPS_ARCH := arm
+GAPPS_VARIANT := stock
+
 ifneq ($(RR_BUILD),)
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-rr
