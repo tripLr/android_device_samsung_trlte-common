@@ -127,8 +127,8 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/vendor/bin/mm-qcamera-daemon=22 \
     /system/vendor/bin/hw/rild=27
 
-# Lineagehw
-JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(COMMON_PATH)/lineagehw|**/*.java
+# Samsunghw
+JAVA_SOURCE_OVERLAYS := com.samsung.hardware|$(DEVICE_PATH)/samsunghw|**/*.java
 
 # Media
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true

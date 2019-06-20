@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.lineageos.hardware;
+package com.samsung.hardware;
 
 import android.os.SystemProperties;
 import java.io.File;
-import org.lineageos.internal.util.FileUtils;
+import com.samsung.internal.util.FileUtils;
 
 /**
  * Support for displaying a different serial number in Settings -> About Phone
