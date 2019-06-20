@@ -42,6 +42,7 @@ PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1440
+-include vendor/aicp/config/bootanimation.mk
 
 # Audio
 PRODUCT_PACKAGES += \
