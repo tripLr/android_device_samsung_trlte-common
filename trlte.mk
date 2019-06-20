@@ -26,8 +26,7 @@ $(call inherit-product, device/samsung/trlte-common/debug.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay
 
 ifneq ($(RR_BUILD),)
 DEVICE_PACKAGE_OVERLAYS += \
@@ -130,12 +129,6 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service \
     fingerprint.apq8084 \
     ValidityService
-    
-ifeq ($(filter trlte trltecan trlteduos trltespr trltetmo trlteusc trltevzw trltexx,$(TARGET_DEVICE)),)
-# FlipFlap
-PRODUCT_PACKAGES += \
-    FlipFlap
-endif
     
 # Graphics
 PRODUCT_PACKAGES += \
@@ -335,10 +328,6 @@ PRODUCT_PACKAGES += \
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
-
-# Vendor security patch level
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2017-08-01
 
 # Vibrator
 PRODUCT_PACKAGES += \
