@@ -430,10 +430,6 @@
     <!-- Enable Smart Pixels -->
     <bool name="config_enableSmartPixels">true</bool>
 
-    <!-- Enable home button wake  -->
-    <bool name="config_HomeWakeButton">true</bool>
-    <integer name="config_deviceHardwareWakeKeys">65</integer>
-
     <!-- Whether or not swipe up gesture is enabled by default -->
     <bool name="config_swipe_up_gesture_default">true</bool>
 
@@ -442,9 +438,6 @@
      
     <!-- Whether device ignores the RSSNR signal implementation -->
     <bool name="config_ignoreRssnrSignalLevel">true</bool>
-
-    <!-- Button Backlight -->
-    <bool name="config_button_brightness_support">true</bool> 
 
     <!-- Whether the device has outdated qti-telephony-common.jar -->
     <bool name="config_oldQtiTelephony">true</bool>
