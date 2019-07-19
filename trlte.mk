@@ -202,10 +202,6 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl \
     lights.APQ8084
 
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service.apq8084
-
 # Media
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
