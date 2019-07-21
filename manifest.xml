@@ -196,6 +196,10 @@
             <name>IStylusMode</name>
             <instance>default</instance>
         </interface>
+        <interface>
+            <name>ITouchscreenGesture</name>
+            <instance>default</instance>
+        </interface>
     </hal>
      <hal format="hidl">
         <name>android.hardware.renderscript</name>
