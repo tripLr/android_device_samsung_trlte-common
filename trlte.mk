@@ -332,6 +332,10 @@ PRODUCT_PACKAGES += \
     timekeep \
     TimeKeep
 
+# Touch
+PRODUCT_PACKAGES += \
+    vendor.lineage.touch@1.0-service.apq8084
+
 # Trust HAL
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
