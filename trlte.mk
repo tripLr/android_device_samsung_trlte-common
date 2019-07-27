@@ -131,12 +131,6 @@ PRODUCT_PACKAGES += \
     fingerprint.apq8084 \
     ValidityService
     
-ifeq ($(filter trlte trltecan trlteduos trltespr trltetmo trlteusc trltevzw trltexx,$(TARGET_DEVICE)),)
-# FlipFlap
-PRODUCT_PACKAGES += \
-    FlipFlap
-endif
-    
 # Graphics
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.0-service \
