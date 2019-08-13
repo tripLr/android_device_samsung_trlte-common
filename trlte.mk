@@ -129,6 +129,9 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service \
     fingerprint.apq8084 \
     ValidityService
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/validityservice/etc/permissions/privapp-permissions-validityservice.xml:system/etc/permissions/privapp-permissions-validityservice.xml \
     
 # Graphics
 PRODUCT_PACKAGES += \
