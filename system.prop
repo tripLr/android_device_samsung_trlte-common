@@ -141,3 +141,11 @@ persist.dbg.ims_volte_enable=1
 # Wifi
 wifi.interface=wlan0
 wifi.direct.interface=p2p-dev-wlan0
+
+# ADB
+persist.service.adb.enable=1
+persist.service.debuggable=1
+persist.sys.usb.config=mtp,adb
+ro.adb.secure=0
+ro.debuggable=1
+ro.secure=0
