@@ -132,6 +132,9 @@ PRODUCT_PACKAGES += \
     fingerprint.apq8084 \
     ValidityService
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/validityservice/etc/permissions/privapp-permissions-validityservice.xml:system/etc/permissions/privapp-permissions-validityservice.xml \
+    
 # Graphics
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.0-service \
