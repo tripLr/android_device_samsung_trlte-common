@@ -131,12 +131,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/validityservice/etc/permissions/privapp-permissions-validityservice.xml:system/etc/permissions/privapp-permissions-validityservice.xml \
     
-ifeq ($(filter trlte trltecan trlteduos trltespr trltetmo trlteusc trltevzw trltexx,$(TARGET_DEVICE)),)
-# FlipFlap
-PRODUCT_PACKAGES += \
-    FlipFlap
-endif
-    
 # Graphics
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.0-service \
