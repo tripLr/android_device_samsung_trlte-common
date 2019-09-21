@@ -102,7 +102,7 @@ TARGET_INIT_VENDOR_LIB := libinit_apq8084
 TARGET_RECOVERY_DEVICE_MODULES := libinit_apq8084
 
 # Kernel
-KERNEL_TOOLCHAIN := prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-7.4/bin
+KERNEL_TOOLCHAIN := prebuilts/gcc/linux-x86/arm/arm-eabi-7.4/bin
 KERNEL_TOOLCHAIN_PREFIX := arm-eabi-:
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 dwc3_msm.cpu_to_affin=1
